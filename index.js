@@ -2,16 +2,18 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const password = "kkua5DnM!pBTfUa";
-const port = 8080;
+const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const uri = `mongodb+srv://mongosCoder:${password}@cluster0.4ghr0.mongodb.net/userDB?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 
 
